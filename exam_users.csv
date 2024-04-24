@@ -1,1 +1,2 @@
-userid,email,name,accredited
+user_id,email,first_name,last_name,password,accredited
+25088,g.south@me.com,Grant,South,abcd,False
