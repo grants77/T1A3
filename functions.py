@@ -213,7 +213,11 @@ def record_result(user_tally):
             writer = csv.writer(f)
             writer.writerow([user_id,user_first_name,user_last_name,user_email,result_datetime,user_tally])
             file_results.close()
-    elif user_tally >= 8:
-        with open(file_users), 'r' as f:
-            writer = csv.writer(f)
-            writer.writerow
+    if user_tally >= 8:
+        with open(file_users, 'r') as f:
+            reader = csv.reader(f)
+            rows = list(reader)
+
+            for row in rows:
+                if row[0] == 
+            
