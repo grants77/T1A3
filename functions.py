@@ -5,6 +5,8 @@ import random
 
 # External Packages
 ## Add Colored ##
+## Add password masking ##
+## Add Date Time ##
 
 # Imported Packages
 
@@ -12,14 +14,15 @@ file_questions = "exam_questions.csv"
 file_results = "exam_results.csv"
 file_users = "exam_users.csv"
 referee_email = None
+user_details = {}
 
-
-
+# Welcome Text
 def welcome_screen():
     print("\nWelcome to the FIFA Laws of the Game Exam\n")
 
+# Login Function
 def user_check():
-    global referee_email
+    global referee_email, user_details
     try:
         user_file = open (file_users, "r")
         referee_email = input("Enter Email: ")
@@ -30,6 +33,7 @@ def user_check():
             if referee_email == item[1]:
                 user_found = True
                 print("User Found!!! - Next Step, Password")
+                user_details = user_finder(referee_email)
                 break
         
         if user_found:
@@ -52,9 +56,20 @@ def user_check():
             create_new_user(referee_email)
 
     except FileNotFoundError:
-        print('File Not Found, Creating New File')
+        print("File Not Found, Creating New File")
         create_users_file()
 
+# Retains user details on login for future use
+def user_finder(referee_email):
+    with open(file_users, "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row['email'] == referee_email:
+                user_details = row
+                break
+    return user_details
+
+# Created a new user in csv file
 def create_new_user(referee_email):
     referee_first_name = input("Enter First Name: ")
     referee_last_name = input("Enter Last Name: ")
@@ -66,24 +81,29 @@ def create_new_user(referee_email):
     print(f"Thanks for registering {referee_first_name}.\nYour new Referee ID is {referee_user_id}")
     return
 
+# Generates random number for user_id
 def create_user_id():
     return str(random.randint(10000,90000))
 
+# Generates user file if none exists
 def create_users_file():
     while (not os.path.isfile(file_users)):
         user_file = open(file_users, "w")
         user_file.write("user_id,email,first_name,last_name,password,accredited\n")
         user_file.close()
 
+# Generates results file if none exists
 def create_results_file():
     while (not os.path.isfile(file_results)):
         user_file = open(file_results, "w")
         user_file.write("userid,date,score,result\n")
         user_file.close()
 
+# Menu Options
 def user_menu():
     print("Main Menu: \n 1. Take New Exam \n 2. View Previous Scores \n 3. View Personal Profile \n 4. Exit")
     
+# Determines next step when menu item selected
 def menu_selection():
     user_selection = ""
     while user_selection != "4":
@@ -109,12 +129,13 @@ def menu_selection():
         else:
             print("You have not made a valid selection")
 
-
+# Menu Item 3 - Personal Profile
 def user_profile(email):
-    print(f"{referee_email}")
+    user_id = user_details.get("user_id")
+    print(f"{referee_email} {user_id}")
+    user_exit()
 
 
+# Exit Message
 def user_exit():
     print("\nThank you for participating in the FIFA LOTG Application. Goodbye\n")
-
-    
