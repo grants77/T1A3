@@ -13,7 +13,5 @@ def main():
 
     functions.user_check()
 
-    functions.menu_selection()
-
 if __name__ == '__main__':
     main()

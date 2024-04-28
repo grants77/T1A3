@@ -45,6 +45,7 @@ def user_check():
                 if password_entered == item[4]:
                     print("Password Correct")
                     user_file.close()
+                    menu_selection()
                     return
                 else:
                     current_attempts += 1
@@ -121,6 +122,7 @@ def menu_selection():
         elif user_selection == "3":
             print("You chose 3") # Personal Profile
             user_profile(referee_email)
+            break
 
         elif user_selection == "4":
             print("You chose 4") #Logout
@@ -132,10 +134,24 @@ def menu_selection():
 # Menu Item 3 - Personal Profile
 def user_profile(email):
     user_id = user_details.get("user_id")
-    print(f"{referee_email} {user_id}")
-    user_exit()
-
+    last_name = user_details.get("last_name")
+    first_name = user_details.get("first_name")
+    referee_email = user_details.get("email")
+    accredited = user_details.get("accredited")
+    print(f"\nRegistration Number: {user_id}\nName: {last_name}, {first_name}\nEmail: {referee_email}\nAccredited: {accredited}\n")
+    return_or_exit()
 
 # Exit Message
 def user_exit():
     print("\nThank you for participating in the FIFA LOTG Application. Goodbye\n")
+
+def return_or_exit():
+    print("Do you want to return to the main menu?")
+    decision = input('Enter "Y" to return, or "exit" to leave the application: ').lower()
+    if decision == "Y":
+        menu_selection()
+    elif decision == "exit":
+        user_exit()
+    else:
+        print("Invalid entry, try again")
+        return_or_exit()
