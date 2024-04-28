@@ -11,11 +11,15 @@ import random
 file_questions = "exam_questions.csv"
 file_results = "exam_results.csv"
 file_users = "exam_users.csv"
+referee_email = None
+
+
 
 def welcome_screen():
     print("\nWelcome to the FIFA Laws of the Game Exam\n")
 
 def user_check():
+    global referee_email
     try:
         user_file = open (file_users, "r")
         referee_email = input("Enter Email: ")
@@ -96,7 +100,7 @@ def menu_selection():
 
         elif user_selection == "3":
             print("You chose 3") # Personal Profile
-            #user_profile
+            user_profile(referee_email)
 
         elif user_selection == "4":
             print("You chose 4") #Logout
@@ -105,11 +109,10 @@ def menu_selection():
         else:
             print("You have not made a valid selection")
 
-# def user_scores():
 
-# def user_profile():
+def user_profile(email):
+    print(f"{referee_email}")
 
-# def user_exam():
 
 def user_exit():
     print("\nThank you for participating in the FIFA LOTG Application. Goodbye\n")
