@@ -2,6 +2,7 @@
 import os.path
 import csv
 import random
+from datetime import datetime
 
 # External Packages
 ## Add Colored ##
@@ -16,15 +17,12 @@ file_users = "exam_users.csv"
 referee_email = None
 user_details = {}
 
-# Welcome Text
-def welcome_screen():
-    print("\nWelcome to the FIFA Laws of the Game Exam\n")
-
 # Login Function
 def user_check():
     global referee_email, user_details
     try:
         user_file = open (file_users, "r")
+        print("\nWelcome to the FIFA Laws of the Game Exam\n") 
         referee_email = input("Enter Email: ")
         
         user_found = False
@@ -32,8 +30,8 @@ def user_check():
             item = line.strip().split(",")
             if referee_email == item[1]:
                 user_found = True
-                print("User Found!!! - Next Step, Password")
                 user_details = user_finder(referee_email)
+                print("Welcome Back!")
                 break
         
         if user_found:
@@ -55,10 +53,12 @@ def user_check():
         else:
             print("User Not Found?!? - Next Step, Create New")
             create_new_user(referee_email)
+            menu_selection()
 
     except FileNotFoundError:
         print("File Not Found, Creating New File")
         create_users_file()
+        user_check()
 
 # Retains user details on login for future use
 def user_finder(referee_email):
@@ -102,18 +102,19 @@ def create_results_file():
 
 # Menu Options
 def user_menu():
-    print("Main Menu: \n 1. Take New Exam \n 2. View Previous Scores \n 3. View Personal Profile \n 4. Exit")
+    print("\nMain Menu: \n 1. Take New Exam \n 2. View Previous Scores \n 3. View Personal Profile \n 4. Logout \n 5. Exit")
     
 # Determines next step when menu item selected
 def menu_selection():
     user_selection = ""
-    while user_selection != "4":
+    while user_selection != "5":
         user_menu()
         user_selection = input("Select Menu Number: ")
         print(f"You've chosen menu item {user_selection}")
         if user_selection == "1": # Take Exam
             print("You chose 1")
-            #user_exam()
+            user_exam()
+            break
 
         elif user_selection == "2":
             print("You chose 2") # Previous Scores
@@ -126,7 +127,13 @@ def menu_selection():
 
         elif user_selection == "4":
             print("You chose 4") #Logout
-            user_exit()
+            print("You have been logged out of the FIFA LOTG Application")
+            user_check()
+            break
+        
+        elif user_selection =="5":
+            print("You chose 5") #Exit
+            return
 
         else:
             print("You have not made a valid selection")
@@ -148,10 +155,48 @@ def user_exit():
 def return_or_exit():
     print("Do you want to return to the main menu?")
     decision = input('Enter "Y" to return, or "exit" to leave the application: ').lower()
-    if decision == "Y":
+    if decision == 'y':
         menu_selection()
     elif decision == "exit":
-        user_exit()
+        return
     else:
         print("Invalid entry, try again")
         return_or_exit()
+
+
+
+
+
+#########  EXAM FUNCTIONS BELOW #########
+
+def user_exam():
+    exam = {}
+    user_tally = 0
+    user_id = user_details.get("user_id")
+    user_email = user_details.get("email")
+    result_datetime = datetime.now().strftime('%y-%m-%d %H:%M:%S')
+    with open(file_questions, 'r') as f:
+        reader = csv.reader(f)
+        questions = list(reader)
+        random.shuffle(questions)
+        exam_questions = questions[:10]
+        
+        for row in exam_questions:
+            question, answer = row[0], row[1]
+            exam[question] = answer
+
+        for question, correct_answer in exam.items():
+            print(question)
+            user_answer = input("Enter 'True' or 'False': ").strip().lower()
+            if user_answer == correct_answer.lower():
+                print("Correct!")
+                user_tally += 1
+            else:
+                print("Incorrect.")
+
+    with open(file_results, 'a') as f:
+        writer = csv.writer(f)
+        writer.writerow([user_id,user_email,result_datetime,user_tally])
+        
+
+    return exam
