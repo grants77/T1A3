@@ -7,7 +7,6 @@ from datetime import datetime
 # External Packages
 ## Add Colored ##
 ## Add password masking ##
-## Add Date Time ##
 
 # Imported Packages
 
@@ -117,8 +116,8 @@ def menu_selection():
             break
 
         elif user_selection == "2":
-            print("You chose 2") # Previous Scores
-            #user_scores
+            print("You chose 2") # Previous Results
+            user_results()
 
         elif user_selection == "3":
             print("You chose 3") # Personal Profile
@@ -138,15 +137,7 @@ def menu_selection():
         else:
             print("You have not made a valid selection")
 
-# Menu Item 3 - Personal Profile
-def user_profile(email):
-    user_id = user_details.get("user_id")
-    last_name = user_details.get("last_name")
-    first_name = user_details.get("first_name")
-    referee_email = user_details.get("email")
-    accredited = user_details.get("accredited")
-    print(f"\nRegistration Number: {user_id}\nName: {last_name}, {first_name}\nEmail: {referee_email}\nAccredited: {accredited}\n")
-    return_or_exit()
+
 
 # Exit Message
 def user_exit():
@@ -163,18 +154,36 @@ def return_or_exit():
         print("Invalid entry, try again")
         return_or_exit()
 
+########## PERSONAL PROFILE ##########
+
+# Menu Item 3 - Personal Profile
+def user_profile(email):
+    user_id = user_details.get("user_id")
+    last_name = user_details.get("last_name")
+    first_name = user_details.get("first_name")
+    referee_email = user_details.get("email")
+    accredited = user_details.get("accredited")
+    print(f"\nRegistration Number: {user_id}\nName: {last_name}, {first_name}\nEmail: {referee_email}\nAccredited: {accredited}\n")
+    return_or_exit()
 
 
+######### PREVIOUS RESULTS ##########
 
+# Menu Item 2 - Previous Results
+def user_results():
+    user_id = user_details.get("user_id")
+    with open(file_results, 'r') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if row[0] == user_id:
+                print(f"{row[0]},{row[1]},{row[2]},{row[3]}")
 
-#########  EXAM FUNCTIONS BELOW #########
+#########  REFEREE EXAM #########
 
+# Menu Item 1 - Runs the Exam
 def user_exam():
     exam = {}
     user_tally = 0
-    user_id = user_details.get("user_id")
-    user_email = user_details.get("email")
-    result_datetime = datetime.now().strftime('%y-%m-%d %H:%M:%S')
     with open(file_questions, 'r') as f:
         reader = csv.reader(f)
         questions = list(reader)
@@ -189,14 +198,22 @@ def user_exam():
             print(question)
             user_answer = input("Enter 'True' or 'False': ").strip().lower()
             if user_answer == correct_answer.lower():
-                print("Correct!")
                 user_tally += 1
-            else:
-                print("Incorrect.")
+    record_result(user_tally)
 
-    with open(file_results, 'a') as f:
-        writer = csv.writer(f)
-        writer.writerow([user_id,user_email,result_datetime,user_tally])
-        
-
-    return exam
+# Records the result of the user_exam
+def record_result(user_tally):
+    user_id = user_details.get("user_id")
+    user_email = user_details.get("email")
+    user_first_name = user_details.get("first_name")
+    user_last_name = user_details.get("last_name")
+    result_datetime = datetime.now().strftime('%y-%m-%d %H:%M:%S')
+    if user_tally >= 0:
+        with open(file_results, 'a') as f:
+            writer = csv.writer(f)
+            writer.writerow([user_id,user_first_name,user_last_name,user_email,result_datetime,user_tally])
+            file_results.close()
+    elif user_tally >= 8:
+        with open(file_users), 'r' as f:
+            writer = csv.writer(f)
+            writer.writerow
