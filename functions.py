@@ -86,19 +86,19 @@ def menu_selection():
         user_menu()
         user_selection = input("Select Menu Number: ")
         print(f"You've chosen menu item {user_selection}")
-        if user_selection == 1: # Take Exam
+        if user_selection == "1": # Take Exam
             print("You chose 1")
             #user_exam()
 
-        elif user_selection == 2:
+        elif user_selection == "2":
             print("You chose 2") # Previous Scores
             #user_scores
 
-        elif user_selection == 3:
+        elif user_selection == "3":
             print("You chose 3") # Personal Profile
             #user_profile
 
-        elif user_selection == 4:
+        elif user_selection == "4":
             print("You chose 4") #Logout
             user_exit()
 
