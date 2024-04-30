@@ -1,60 +1,60 @@
 Law 1 - The field of play must be rectangular and marked with continuous lines which must not be dangerous.,TRUE
-Law 1 - The two longer boundary lines are goal lines. The two shorter lines are touchlines.,FALSE
+Law 1 - The two longer boundary lines are goal lines. The two shorter lines are touchlines.F,FALSE
 Law 1 - The field of play is divided into two halves by a halfway line; which joins the midpoints of the two touchlines.,TRUE
 Law 1 - The centre mark is at the midpoint of the halfway line. A circle with a radius  of 9.15m (10yds) is marked around it.,TRUE
-Law 1 - Marks may be made off the field of play 10.15m (12yds) from the corner arc  at right angles to the goal lines and the touchlines.,FALSE
+Law 1 - Marks may be made off the field of play 10.15m (12yds) from the corner arc  at right angles to the goal lines and the touchlines.F,FALSE
 Law 1 - All lines must be of the same width; which must not be more than 12cm  (5ins).,TRUE
 Law 1 - The length of the touchline is a minimum of 90m and a maximum of 120m (non-international),TRUE
-Law 1 - The length of the touchline is a minimum of 140m and a maximum of 160m (international),FALSE
+Law 1 - The length of the touchline is a minimum of 140m and a maximum of 160m (international)F,FALSE
 Law 1 - The length of the goal line in a minimum of 45m and a maximum of 90m (non-international),TRUE
-Law 1 - The length of the goal line in a minimum of 90m and a maximum of 95m (international),FALSE
+Law 1 - The length of the goal line in a minimum of 90m and a maximum of 95m (international)F,FALSE
 Law 2 - All the balls must have a circumference between 68cm and 70cm.,TRUE
 Law 2 - All the balls must be between 410g and 450g in weight at the start of the match.,TRUE
 Law 2 - All the balls must have pressure equal to 0.6-1.1 atmosphere at sea level.,TRUE
 Law 2 - If the ball becomes defective; play is stopped and restarted with a dropped ball.,TRUE
-Law 2 - If the ball becomes defective at a kick-off; goal kick; corner kick; free kick; penalty kick or throw-in; the restart is a drop ball.,FALSE
+Law 2 - If the ball becomes defective at a kick-off; goal kick; corner kick; free kick; penalty kick or throw-in; the restart is a drop ball.F,FALSE
 Law 3 - A match is played by two teams; each with a maximum of eleven players;  one must be the goalkeeper.,TRUE
 Law 3 - A match may not start or continue if either team has fewer than seven players.,TRUE
 Law 3 - The substitute only enters: -during a stoppage in play -at the halfway line -after the player being replaced has left -after receiving a signal from the referee.,TRUE
-Law 3 - A caution is given to a substitute who starts the match instead of a named player without the referee being informed.,FALSE
+Law 3 - A caution is given to a substitute who starts the match instead of a named player without the referee being informed.F,FALSE
 Law 3 - Any of the players may change places with the goalkeeper if; the referee is informed before the change is made and the change is made during a stoppage in play .,TRUE
-Law 3 - A player who is sent off after the kick-off can be replaced.,FALSE
+Law 3 - A player who is sent off after the kick-off can be replaced.F,FALSE
 Law 3 - A named substitute who is sent off before or after the kick-off may not be replaced.,TRUE
 Law 4 - A Player must not use equipment or wear anything that is dangerous.,TRUE
 Law 4 - All items of jewellery are forbidden and must be removed. Using tape to cover jewellery is not permitted.,TRUE
 Law 4 - Compulsory equipment of a player comprises of the following separate items; shirt with sleeves; shorts; socks; shinguards and footwear.,TRUE
 Law 4 - The two teams must wear colours that distinguish them from each other and the match officials.,TRUE
 Law 4 - Players (including substitutes/substituted and sent-off players) are not permitted to wear or use any form of electronic or communication equipment.,TRUE
-Law 4 - Equipment may have any political; religious or personal slogans; statements or images.,FALSE
+Law 4 - Equipment may have any political; religious or personal slogans; statements or images.F,FALSE
 Law 5 - Each match is controlled by a referee who has full authority to enforce  the Laws of the Game in connection with the match.,TRUE
 Law 5 - The decisions of the referee regarding facts connected with play; including whether or not a goal is scored and the result of the match; are final.,TRUE
 Law 5 - The referee enforces the LOTG; controls the match; acts as timekeeper and supervises and/or indicates the restart of play.,TRUE
 Law 5 - The referee allows play to continue until the ball is out of play if a player is only slightly injured.,TRUE
 Law 5 - Referees must have the following equipment: Whistle(s); watch(es); red and yellow cards and a notebook.,TRUE
 Law 6 - Assistant referees indicate when the whole of the ball leaves the field of play and which team is entitled  to a corner kick; goal kick or throw-in.,TRUE
-Law 6 - Assistant referees cannot indicate when a player in an offside position may be penalised.,FALSE
+Law 6 - Assistant referees cannot indicate when a player in an offside position may be penalised.F,FALSE
 Law 6 - Assistant referees indicate when a substitution is requested.,TRUE
 Law 6 - Assistant referees indicate when at penalty kicks; the goalkeeper moves off the goal line before the ball is kicked and if the ball crosses the line.,TRUE
-Law 7 - The duration of the match lasts for two equal halves of 40 minutes.,FALSE
+Law 7 - The duration of the match lasts for two equal halves of 40 minutes.F,FALSE
 Law 7 - Players are entitled to an interval at half-time; not exceeding 15 minutes.,TRUE
 Law 7 - If a penalty kick has to be taken or retaken; the half is extended until the penalty kick is completed.,TRUE
-Law 7 - An abandoned match may not be replayed.,FALSE
+Law 7 - An abandoned match may not be replayed.F,FALSE
 Law 8 - The referee tosses a coin and the team that wins the toss decides which goal to attack in the first half or to take the kick-off,TRUE
 Law 8 - For a kick-off all players; except the player taking the kick-off; must be in their own half  of the field of play,TRUE
 Law 8 - The ball is dropped for the defending team goalkeeper in their penalty area if; when play was stopped; the ball was in the penalty area.,TRUE
 Law 9 - The ball is in play at all other times when it touches a match official and when it rebounds off a goalpost; crossbar or corner flagpost and remains on the field of play,TRUE
-Law 10 - A goal is scored when the whole of the ball passes over the goal line; between the goalposts and over the crossbar.,FALSE
+Law 10 - A goal is scored when the whole of the ball passes over the goal line; between the goalposts and over the crossbar.F,FALSE
 Law 10 - The team scoring the greater number of goals is the winner. If both teams score no goals or an equal number of goals; the match is drawn.,TRUE
-Law 11 - It is an offence to be in an offside position.,FALSE
+Law 11 - It is an offence to be in an offside position.F,FALSE
 Law 11 - The hands and arms of all players; including the goalkeepers; are not considered to be offside.,TRUE
 Law 11 - There is no offside offence if a player receives the ball directly from; a goal kick; a throw-in or a corner kick.,TRUE
 Law 11 - If an offside offence occurs; the referee awards an indirect free kick where the offence occurred.,TRUE
-Law 12 - A direct free kick is awarded if a player plays in a dangerous manner.,FALSE
+Law 12 - A direct free kick is awarded if a player plays in a dangerous manner.F,FALSE
 Law 13 - Direct and indirect free kicks are awarded to the opposing team of a player; substitute; substituted or sent-off player; or team official guilty of an offence.,TRUE
 Law 14 - For a penalthy kick; the ball must be stationary on the penalty mark and the goalposts; crossbar and goal net must not be moving.,TRUE
 Law 14 - For a penelty kick; the player taking the penalty kick must be clearly identified.,TRUE
 Law 14 - For a penalty kick; the defending goalkeeper must remain on the goal line; facing the kicker; between the goalposts; until the ball is kicked.,TRUE
 Law 15 - For a throw-in the thrower must; stand facing the field of play; have part of each foot on the touchline or the gorund outside; and throw with both hands.,TRUE
-Law 15 - For a throw-in opponents must stand at least 9.15m from the point where the throw-in is to be taken.,FALSE
+Law 15 - For a throw-in opponents must stand at least 9.15m from the point where the throw-in is to be taken.F,FALSE
 Law 16 - For a goal-kick the ball must be stationary and is kicked from any point within the goal  area by a player of the defending team.,TRUE
 Law 17 - For a corner-kick the ball must be placed in the corner area nearest to the point where the  ball passed over the goal line,TRUE

@@ -1,6 +1,8 @@
 user_id,email,first_name,last_name,password,accredited
 89700,df,df,df,df,False
-15646,g.south@me.com,Grant,South,abcd,False
+15646,g.south@me.com,Grant,South,abcd,True
 82471,new@user.com,Fred,James,popo,False
 84384,let@new.com,Hom,End,gh,False
 73772,5,5,5,5,False
+36573,g.,,f,f,False
+64861,[Ag.south@me.com,df,df,qw,False

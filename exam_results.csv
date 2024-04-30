@@ -1,9 +1,5 @@
-user_id,user_email,result_datetime,user_tally
-,,24-04-28 17:48:58,0
-15646,g.south@me.com,24-04-28 17:54:51,9
-15646,g.south@me.com,24-04-28 17:55:47,0
-,,24-04-28 17:56:23,1
-82471,new@user.com,24-04-28 17:56:52,1
-15646,g.south@me.com,24-04-28 18:27:35,7
-15646,g.south@me.com,24-04-28 18:46:15,5
-15646,g.south@me.com,24-04-28 18:47:42,8
+user_id,first_name,last_name,email,date_time,score
+15646,Grant,South,g.south@me.com,24-04-30 19:09:47,9
+15646,Grant,South,g.south@me.com,24-04-30 19:42:53,9
+15646,Grant,South,g.south@me.com,24-04-30 20:16:04,2
+15646,Grant,South,g.south@me.com,24-04-30 20:16:14,8

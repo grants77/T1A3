@@ -16,6 +16,8 @@ file_users = "exam_users.csv"
 referee_email = None
 user_details = {}
 
+########## LOGIN AND USER MENU ##########
+
 # Login Function
 def user_check():
     global referee_email, user_details
@@ -41,7 +43,6 @@ def user_check():
                 item = line.strip().split(",")
                 if password_entered == item[4]:
                     print("Password Correct")
-                    user_file.close()
                     menu_selection()
                     return
                 else:
@@ -58,6 +59,46 @@ def user_check():
         print("File Not Found, Creating New File")
         create_users_file()
         user_check()
+
+
+    
+# Determines next step when menu item selected
+def menu_selection():
+    user_selection = ""
+    while user_selection != "5":
+        user_menu()
+        user_selection = input("Select Menu Number: ")
+        print(f"You've chosen menu item {user_selection}")
+        if user_selection == "1": # Take Exam
+            print("You chose 1")
+            user_exam()
+
+        elif user_selection == "2":
+            print("You chose 2") # Previous Results
+            user_results()
+
+        elif user_selection == "3":
+            print("You chose 3") # Personal Profile
+            user_profile(referee_email)
+
+        elif user_selection == "4":
+            print("You chose 4") #Logout
+            print("You have been logged out of the FIFA LOTG Application")
+            user_check()
+        
+        elif user_selection == "5":
+            print("You chose 5") #Exit
+            user_exit()
+
+        else:
+            print("You have not made a valid selection")
+
+
+# Menu Options
+def user_menu():
+    print("\nMain Menu: \n 1. Take New Exam \n 2. View Previous Scores \n 3. View Personal Profile \n 4. Logout \n 5. Exit")
+
+
 
 # Retains user details on login for future use
 def user_finder(referee_email):
@@ -92,67 +133,8 @@ def create_users_file():
         user_file.write("user_id,email,first_name,last_name,password,accredited\n")
         user_file.close()
 
-# Generates results file if none exists
-def create_results_file():
-    while (not os.path.isfile(file_results)):
-        user_file = open(file_results, "w")
-        user_file.write("userid,date,score,result\n")
-        user_file.close()
-
-# Menu Options
-def user_menu():
-    print("\nMain Menu: \n 1. Take New Exam \n 2. View Previous Scores \n 3. View Personal Profile \n 4. Logout \n 5. Exit")
-    
-# Determines next step when menu item selected
-def menu_selection():
-    user_selection = ""
-    while user_selection != "5":
-        user_menu()
-        user_selection = input("Select Menu Number: ")
-        print(f"You've chosen menu item {user_selection}")
-        if user_selection == "1": # Take Exam
-            print("You chose 1")
-            user_exam()
-            break
-
-        elif user_selection == "2":
-            print("You chose 2") # Previous Results
-            user_results()
-
-        elif user_selection == "3":
-            print("You chose 3") # Personal Profile
-            user_profile(referee_email)
-            break
-
-        elif user_selection == "4":
-            print("You chose 4") #Logout
-            print("You have been logged out of the FIFA LOTG Application")
-            user_check()
-            break
-        
-        elif user_selection =="5":
-            print("You chose 5") #Exit
-            return
-
-        else:
-            print("You have not made a valid selection")
 
 
-
-# Exit Message
-def user_exit():
-    print("\nThank you for participating in the FIFA LOTG Application. Goodbye\n")
-
-def return_or_exit():
-    print("Do you want to return to the main menu?")
-    decision = input('Enter "Y" to return, or "exit" to leave the application: ').lower()
-    if decision == 'y':
-        menu_selection()
-    elif decision == "exit":
-        return
-    else:
-        print("Invalid entry, try again")
-        return_or_exit()
 
 ########## PERSONAL PROFILE ##########
 
@@ -167,18 +149,42 @@ def user_profile(email):
     return_or_exit()
 
 
-######### PREVIOUS RESULTS ##########
+
+
+
+########## PREVIOUS RESULTS ##########
 
 # Menu Item 2 - Previous Results
 def user_results():
-    user_id = user_details.get("user_id")
-    with open(file_results, 'r') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            if row[0] == user_id:
-                print(f"{row[0]},{row[1]},{row[2]},{row[3]}")
+    try:
+        user_id = user_details.get("user_id")
+        with open(file_results, 'r') as f:
+            reader = csv.reader(f)
+            found_results = False
+            print("\n             Previous Results \n--------------------------------------------\n|        Date       |     Name    | Score |")
+            for row in reader:
+                if row[0] == user_id:
+                    print(f"| {row[4]} | {row[1]} {row[2]} |   {row[5]}   |")
+                    found_results = True
+            if not found_results:
+                print("\nNo results exist for this user")
+            return_or_exit()
+    except FileNotFoundError:
+        print("\nNo results exist for this user")
+        create_results_file()
+        return_or_exit()
 
-#########  REFEREE EXAM #########
+# Generates results file if none exists
+def create_results_file():
+    while (not os.path.isfile(file_results)):
+        user_file = open(file_results, "w")
+        user_file.write("user_id,first_name,last_name,email,date_time,score\n")
+
+
+
+
+
+##########  REFEREE EXAM ##########
 
 # Menu Item 1 - Runs the Exam
 def user_exam():
@@ -208,16 +214,49 @@ def record_result(user_tally):
     user_first_name = user_details.get("first_name")
     user_last_name = user_details.get("last_name")
     result_datetime = datetime.now().strftime('%y-%m-%d %H:%M:%S')
+    
+ #Adds the score for the exam into the results file
     if user_tally >= 0:
         with open(file_results, 'a') as f:
             writer = csv.writer(f)
             writer.writerow([user_id,user_first_name,user_last_name,user_email,result_datetime,user_tally])
-            file_results.close()
+
+#Updates the users file to accredited (80% pass mark)    
     if user_tally >= 8:
         with open(file_users, 'r') as f:
             reader = csv.reader(f)
             rows = list(reader)
 
-            for row in rows:
-                if row[0] == 
-            
+            found_user = False
+            for i, row in enumerate(rows):
+                if row[0] == user_id:
+                    rows[i][5] = "True"
+                    found_user = True
+                    break
+    
+            if found_user:
+                with open(file_users, 'w', newline='') as f:
+                    writer = csv.writer(f)
+                    writer.writerows(rows)
+            else:
+                print("User not found")
+
+
+########## EXITING THE APPLICATION ##########
+
+# Back to Main Menu or Exit Application
+def return_or_exit():
+    print("\nDo you want to return to the main menu?")
+    decision = input('Enter "Y" to return, or "exit" to leave the application: ').lower()
+    if decision == 'y':
+        menu_selection()
+    elif decision == "exit":
+        user_exit()
+    else:
+        print("Invalid entry, try again")
+        return_or_exit()
+
+# Exit Message
+def user_exit():
+    print("\nThank you for participating in the FIFA LOTG Application. Goodbye\n")
+    return

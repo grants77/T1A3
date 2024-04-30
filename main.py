@@ -11,7 +11,5 @@ def main():
 
     functions.user_check()
 
-    functions.user_exit()
-
 if __name__ == '__main__':
     main()
