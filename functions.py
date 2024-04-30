@@ -32,14 +32,14 @@ def user_check():
             if referee_email == item[1]:
                 user_found = True
                 user_details = user_finder(referee_email)
-                print("Welcome Back!")
+                print("\nWelcome Back!")
                 break
         
         if user_found:
             current_attempts = 0
             expire_attempts = 3
             while current_attempts < expire_attempts:
-                password_entered = input("Enter Password: ")
+                password_entered = input("\nEnter Password: ")
                 item = line.strip().split(",")
                 if password_entered == item[4]:
                     print("Password Correct")
@@ -50,6 +50,7 @@ def user_check():
                     print(f"Password Incorrect - {expire_attempts - current_attempts} attempts remaining")
             print("Too many attempts - Try again later")
             user_exit()
+            
         else:
             print("User Not Found?!? - Next Step, Create New")
             create_new_user(referee_email)
@@ -64,34 +65,35 @@ def user_check():
     
 # Determines next step when menu item selected
 def menu_selection():
+    print("DEBUGGING - MENU_SELECTION")
     user_selection = ""
-    while user_selection != "5":
-        user_menu()
-        user_selection = input("Select Menu Number: ")
-        print(f"You've chosen menu item {user_selection}")
-        if user_selection == "1": # Take Exam
-            print("You chose 1")
-            user_exam()
+    user_menu()
+    user_selection = input("Select Menu Number: ")
+    print(f"You've chosen menu item {user_selection}")
+    if user_selection == "1": # Take Exam
+        print("You chose 1")
+        user_exam()
 
-        elif user_selection == "2":
-            print("You chose 2") # Previous Results
-            user_results()
+    elif user_selection == "2":
+        print("You chose 2") # Previous Results
+        user_results()
 
-        elif user_selection == "3":
-            print("You chose 3") # Personal Profile
-            user_profile(referee_email)
+    elif user_selection == "3":
+        print("You chose 3") # Personal Profile
+        user_profile(referee_email)
 
-        elif user_selection == "4":
-            print("You chose 4") #Logout
-            print("You have been logged out of the FIFA LOTG Application")
-            user_check()
-        
-        elif user_selection == "5":
-            print("You chose 5") #Exit
-            user_exit()
+    elif user_selection == "4":
+        print("You chose 4") #Logout
+        print("You have been logged out of the FIFA LOTG Application")
+        user_check()
+    
+    elif user_selection == "5":
+        print("You chose 5") #Exit
+        print("DEBUGGING - IN SELECTION 5")
+        user_exit()
 
-        else:
-            print("You have not made a valid selection")
+    else:
+        print("You have not made a valid selection")
 
 
 # Menu Options
@@ -246,6 +248,7 @@ def record_result(user_tally):
 
 # Back to Main Menu or Exit Application
 def return_or_exit():
+    print("DEBUGGING - RETURN_OR_EXIT")
     print("\nDo you want to return to the main menu?")
     decision = input('Enter "Y" to return, or "exit" to leave the application: ').lower()
     if decision == 'y':
@@ -254,7 +257,6 @@ def return_or_exit():
         user_exit()
     else:
         print("Invalid entry, try again")
-        return_or_exit()
 
 # Exit Message
 def user_exit():
