@@ -50,7 +50,7 @@ def user_check():
                     print(f"Password Incorrect - {expire_attempts - current_attempts} attempts remaining")
             print("Too many attempts - Try again later")
             user_exit()
-            
+
         else:
             print("User Not Found?!? - Next Step, Create New")
             create_new_user(referee_email)
@@ -65,35 +65,29 @@ def user_check():
     
 # Determines next step when menu item selected
 def menu_selection():
-    print("DEBUGGING - MENU_SELECTION")
     user_selection = ""
-    user_menu()
-    user_selection = input("Select Menu Number: ")
-    print(f"You've chosen menu item {user_selection}")
-    if user_selection == "1": # Take Exam
-        print("You chose 1")
-        user_exam()
+    while user_selection != "5":
 
-    elif user_selection == "2":
-        print("You chose 2") # Previous Results
-        user_results()
+        user_menu()
+        user_selection = input("Select Menu Number: ")
+        if user_selection == "1": # Take Exam
+            user_exam()
 
-    elif user_selection == "3":
-        print("You chose 3") # Personal Profile
-        user_profile(referee_email)
+        elif user_selection == "2": # Previous Results
+            user_results()
 
-    elif user_selection == "4":
-        print("You chose 4") #Logout
-        print("You have been logged out of the FIFA LOTG Application")
-        user_check()
-    
-    elif user_selection == "5":
-        print("You chose 5") #Exit
-        print("DEBUGGING - IN SELECTION 5")
-        user_exit()
+        elif user_selection == "3": # Personal Profile
+            user_profile(referee_email)
 
-    else:
-        print("You have not made a valid selection")
+        elif user_selection == "4": # Logout
+            print("\nYou have been logged out of the FIFA LOTG Application")
+            user_check()
+        
+        elif user_selection == "5": # Exit
+            user_exit()
+
+        else:
+            print("\nYou have not made a valid selection. Please try again.")
 
 
 # Menu Options
@@ -208,6 +202,7 @@ def user_exam():
             if user_answer == correct_answer.lower():
                 user_tally += 1
     record_result(user_tally)
+    display_result(user_tally)
 
 # Records the result of the user_exam
 def record_result(user_tally):
@@ -243,12 +238,26 @@ def record_result(user_tally):
             else:
                 print("User not found")
 
+def display_result(user_tally):
+    last_name = user_details.get("last_name ")
+    first_name = user_details.get("first_name")
+    score_percent = user_tally / 10 * 100
+    if user_tally >= 8:
+        print(f"Congratulations {first_name} - You scored {score_percent}%")
+    elif user_tally <= 7:
+        print(f"\nSorry {first_name} - You did not pass. You scored {score_percent}% with the pass mark being 80%.\n\nDo you wish to try again?")
+        decision = input('\nEnter "Y" to retry, or "exit" to leave the application: ').lower()
+        if decision =='y':
+            user_exam()
+        elif decision =="exit":
+            user_exit()
+        else:
+            print("Please enter a valid choice.")
 
 ########## EXITING THE APPLICATION ##########
 
 # Back to Main Menu or Exit Application
 def return_or_exit():
-    print("DEBUGGING - RETURN_OR_EXIT")
     print("\nDo you want to return to the main menu?")
     decision = input('Enter "Y" to return, or "exit" to leave the application: ').lower()
     if decision == 'y':
