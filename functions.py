@@ -15,7 +15,6 @@ file_users = "exam_users.csv"
 referee_email = None
 user_details = {}
 
-
 ########## LOGIN AND USER MENU ##########
 
 # Login or Register Function
@@ -53,7 +52,7 @@ def user_check():
 
         else:
             print("User Not Found?!? - Next Step, Create New")
-            create_new_user(referee_email)
+            user_details = create_new_user(referee_email)
             menu_selection()
 
     except FileNotFoundError:
@@ -110,13 +109,19 @@ def user_finder(referee_email):
 def create_new_user(referee_email):
     referee_first_name = input("Enter First Name: ")
     referee_last_name = input("Enter Last Name: ")
-    referee_password = input("Create New Password : ")
+    referee_password = maskpass.askpass(prompt="New Password: ", mask="#")
     referee_user_id = create_user_id()
     with open(file_users, "a") as f:
         writer = csv.writer(f)
         writer.writerow([referee_user_id,referee_email,referee_first_name, referee_last_name,referee_password,"False"])
-    print(f"Thanks for registering {referee_first_name}.\nYour new Referee ID is {referee_user_id}")
-    return
+    print(f"\nThanks for registering {referee_first_name}.\nYour new Referee ID is {referee_user_id}")
+    return {
+        "user_id": referee_user_id,
+        "email": referee_email,
+        "first_name": referee_first_name,
+        "last_name": referee_last_name,
+        "accredited": "False"
+    }
 
 # Generates random number for user_id
 def create_user_id():
@@ -186,8 +191,9 @@ def user_exam():
             exam[question] = answer
 
         for question, correct_answer in exam.items():
-            print(f"33{question}")
-            user_answer = input("Enter 'True' or 'False': ").strip().lower()
+            print(f"{Fore.black}{Back.white}{Style.bold}{question}{Style.reset}")
+            user_answer = input(f"{Fore.white}{Back.black}{Style.bold}Enter 'True' or 'False': ").strip().lower()
+            print(f"{Style.reset}")
             if user_answer == "exit":
                 user_exit()
                 return
@@ -234,9 +240,10 @@ def display_result(user_tally):
     first_name = user_details.get("first_name")
     score_percent = user_tally / 10 * 100
     if user_tally >= 8:
-        print(f"Congratulations {first_name} - You scored {score_percent}%")
+        print(f"{Back.green}{Fore.white}{Style.bold}Congratulations {first_name} - You passed with a score of {score_percent}%{Style.reset}")
+        return_or_exit()
     elif user_tally <= 7:
-        print(f"\nSorry {first_name} - You did not pass. You scored {score_percent}% with the pass mark being 80%.\n\nDo you wish to try again?")
+        print(f"{Back.red}{Fore.white}{Style.bold}\nSorry {first_name} - You did not pass. You scored {score_percent}% with the pass mark being 80%.{Style.reset}\n\nDo you wish to try again?")
         while True:
             decision = input('\nEnter "Y" to retry, or "N" to return to main menu: ').lower()
             if decision =='y':
