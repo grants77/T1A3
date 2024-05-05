@@ -3,13 +3,11 @@ import os.path
 import csv
 import random
 from datetime import datetime
-import colored
 
 # External Packages
-## Add Colored ##
-## Add password masking ##
+from colored import Fore, Back, Style
+import maskpass
 
-# Imported Packages
 
 file_questions = "exam_questions.csv"
 file_results = "exam_results.csv"
@@ -17,15 +15,16 @@ file_users = "exam_users.csv"
 referee_email = None
 user_details = {}
 
+
 ########## LOGIN AND USER MENU ##########
 
-# Login Function
+# Login or Register Function
 def user_check():
     global referee_email, user_details
     try:
         user_file = open (file_users, "r")
-        print("\nWelcome to the FIFA Laws of the Game Exam\n") 
-        referee_email = input("Enter Email: ")
+        print(f"\nWelcome to the FIFA Laws of the Game Exam") 
+        referee_email = input(" \nEnter Email: ")
         
         user_found = False
         for line in user_file:
@@ -33,14 +32,14 @@ def user_check():
             if referee_email == item[1]:
                 user_found = True
                 user_details = user_finder(referee_email)
-                print("\nWelcome Back!")
+                print("\nWelcome Back!\n")
                 break
         
         if user_found:
             current_attempts = 0
             expire_attempts = 3
             while current_attempts < expire_attempts:
-                password_entered = input("\nEnter Password: ")
+                password_entered = maskpass.askpass(mask="#")
                 item = line.strip().split(",")
                 if password_entered == item[4]:
                     print("Password Correct")
@@ -61,9 +60,7 @@ def user_check():
         print("File Not Found, Creating New File")
         create_users_file()
         user_check()
-
-
-    
+   
 # Determines next step when menu item selected
 def menu_selection():
     user_selection = ""
@@ -95,12 +92,9 @@ def menu_selection():
         else:
             print("\nYou have not made a valid selection. Please try again.")
 
-
 # Menu Options
 def user_menu():
     print("\nMain Menu: \n 1. Take New Exam \n 2. View Previous Scores \n 3. View Personal Profile \n 4. Logout \n 5. Exit")
-
-
 
 # Retains user details on login for future use
 def user_finder(referee_email):
@@ -135,9 +129,6 @@ def create_users_file():
         user_file.write("user_id,email,first_name,last_name,password,accredited\n")
         user_file.close()
 
-
-
-
 ########## PERSONAL PROFILE ##########
 
 # Menu Item 3 - Personal Profile
@@ -149,10 +140,6 @@ def user_profile(email):
     accredited = user_details.get("accredited")
     print(f"\nRegistration Number: {user_id}\nName: {last_name}, {first_name}\nEmail: {referee_email}\nAccredited: {accredited}\n")
     return_or_exit()
-
-
-
-
 
 ########## PREVIOUS RESULTS ##########
 
@@ -182,10 +169,6 @@ def create_results_file():
         user_file = open(file_results, "w")
         user_file.write("user_id,first_name,last_name,email,date_time,score\n")
 
-
-
-
-
 ##########  REFEREE EXAM ##########
 
 # Menu Item 1 - Runs the Exam
@@ -203,7 +186,7 @@ def user_exam():
             exam[question] = answer
 
         for question, correct_answer in exam.items():
-            print(question)
+            print(f"33{question}")
             user_answer = input("Enter 'True' or 'False': ").strip().lower()
             if user_answer == "exit":
                 user_exit()

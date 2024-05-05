@@ -1,9 +1,3 @@
-# System Packages
-
-
-# External Packages
-## Add Colored ##
-
 # Imported Packages
 import functions
 
