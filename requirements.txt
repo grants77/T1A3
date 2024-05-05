@@ -1,0 +1,6 @@
+colored==2.2.4
+evdev==1.7.0
+maskpass==0.3.7
+pynput==1.7.6
+python-xlib==0.33
+six==1.16.0
