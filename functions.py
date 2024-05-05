@@ -3,6 +3,7 @@ import os.path
 import csv
 import random
 from datetime import datetime
+import colored
 
 # External Packages
 ## Add Colored ##
@@ -72,19 +73,24 @@ def menu_selection():
         user_selection = input("Select Menu Number: ")
         if user_selection == "1": # Take Exam
             user_exam()
+            return
 
         elif user_selection == "2": # Previous Results
             user_results()
+            return
 
         elif user_selection == "3": # Personal Profile
             user_profile(referee_email)
+            return
 
         elif user_selection == "4": # Logout
             print("\nYou have been logged out of the FIFA LOTG Application")
             user_check()
+            return
         
         elif user_selection == "5": # Exit
             user_exit()
+            return
 
         else:
             print("\nYou have not made a valid selection. Please try again.")
@@ -157,10 +163,10 @@ def user_results():
         with open(file_results, 'r') as f:
             reader = csv.reader(f)
             found_results = False
-            print("\n             Previous Results \n--------------------------------------------\n|        Date       |     Name    | Score |")
+            print("\n             Previous Results \n--------------------------------------------\n|        Date       |     Name    | Score ")
             for row in reader:
                 if row[0] == user_id:
-                    print(f"| {row[4]} | {row[1]} {row[2]} |   {row[5]}   |")
+                    print(f"| {row[4]} | {row[1]} {row[2]} |   {row[5]}   ")
                     found_results = True
             if not found_results:
                 print("\nNo results exist for this user")
@@ -199,7 +205,10 @@ def user_exam():
         for question, correct_answer in exam.items():
             print(question)
             user_answer = input("Enter 'True' or 'False': ").strip().lower()
-            if user_answer == correct_answer.lower():
+            if user_answer == "exit":
+                user_exit()
+                return
+            elif user_answer == correct_answer.lower():
                 user_tally += 1
     record_result(user_tally)
     display_result(user_tally)
@@ -239,20 +248,22 @@ def record_result(user_tally):
                 print("User not found")
 
 def display_result(user_tally):
-    last_name = user_details.get("last_name ")
     first_name = user_details.get("first_name")
     score_percent = user_tally / 10 * 100
     if user_tally >= 8:
         print(f"Congratulations {first_name} - You scored {score_percent}%")
     elif user_tally <= 7:
         print(f"\nSorry {first_name} - You did not pass. You scored {score_percent}% with the pass mark being 80%.\n\nDo you wish to try again?")
-        decision = input('\nEnter "Y" to retry, or "exit" to leave the application: ').lower()
-        if decision =='y':
-            user_exam()
-        elif decision =="exit":
-            user_exit()
-        else:
-            print("Please enter a valid choice.")
+        while True:
+            decision = input('\nEnter "Y" to retry, or "N" to return to main menu: ').lower()
+            if decision =='y':
+                user_exam()
+                break
+            elif decision =="n":
+                menu_selection()
+                break
+            else:
+                print("\nPlease enter a valid choice.")
 
 ########## EXITING THE APPLICATION ##########
 
@@ -262,12 +273,14 @@ def return_or_exit():
     decision = input('Enter "Y" to return, or "exit" to leave the application: ').lower()
     if decision == 'y':
         menu_selection()
+        return
     elif decision == "exit":
         user_exit()
+        return
     else:
         print("Invalid entry, try again")
+        return_or_exit()
 
 # Exit Message
 def user_exit():
     print("\nThank you for participating in the FIFA LOTG Application. Goodbye\n")
-    return
