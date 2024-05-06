@@ -192,12 +192,17 @@ def user_exam():
 
         for question, correct_answer in exam.items():
             print(f"{Fore.black}{Back.white}{Style.bold}{question}{Style.reset}")
-            user_answer = input(f"{Fore.white}{Back.black}{Style.bold}Enter 'True' or 'False': ").strip().lower()
-            print(f"{Style.reset}")
-            if user_answer == "exit":
-                user_exit()
-                return
-            elif user_answer == correct_answer.lower():
+            while True:
+                user_answer  = input(f"{Fore.white}{Back.black}{Style.bold}Enter 'True' or 'False': ").strip().lower()
+                print(f"{Style.reset}")
+                if user_answer == "exit":
+                    user_exit()
+                    return
+                elif user_answer in ["true", "false"]:
+                    break
+                else:
+                    print(f"{Back.red}{Fore.white}Invalid input. You must enter TRUE, FALSE or EXIT.{Style.reset}\n")
+            if user_answer == correct_answer.lower():
                 user_tally += 1
     record_result(user_tally)
     display_result(user_tally)
