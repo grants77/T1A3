@@ -1,5 +1,7 @@
 # Grant South - Terminal Application
 
+Welcome to the FIFA Laws of the Game Exam Application. This application is designed to generate an exam for p
+
 ### Resources (R3)
 
 ### Repository Link (R4)
