@@ -16,7 +16,12 @@ The Application will allow you to:
 
 ### Links
 
-- [Github Repository](https://github.com/grants77/T1A3)
+- [Github Repository (Public)](https://github.com/grants77/T1A3)
+
+- [Trello KanBan (Public)](https://trello.com/b/UhQ6BV0P/t1a3-fifa-lotg-exam)
+
+- [FIFA Laws of the Game (2023-24)](https://www.theifab.com/laws-of-the-game-documents/?language=all&year=2023%2F24)
+
 
 ### Resources (R3)
 
