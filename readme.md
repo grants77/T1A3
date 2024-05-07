@@ -30,11 +30,11 @@ This application was designed and tested using Windows Subsystem for Linux (WSL)
 
 **1. Open a terminal**
 **2. Close the GitHub Repository via SSH:**
-> git@github.com:grants77/T1A3.git
+> git clone git@github.com:grants77/T1A3.git
 
 **OR via HTTPS:**
 
-> https://github.com/grants77/T1A3.git
+> git clone https://github.com/grants77/T1A3.git
 
 **3. Navigate into the directory of the Cloned Repository:**
 
