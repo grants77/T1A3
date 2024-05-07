@@ -1,7 +1,13 @@
 #!/bin/bash
 
+# Create a Virtual Environment
 python3 -m venv .venv
+
+# Activate the Virtual Environment
 source .venv/bin/activate
-pip3 install colored
-pip3 install maskpass
-python3 main.py
+
+# Set the install.sh script to executable
+chmod +x install.sh
+
+# Run the install.sh script
+./install.sh
