@@ -8,6 +8,8 @@ The Application will allow you to:
 
 - **Login:** The user can login to the application and store their name, email address and accreditation status. 
 
+- **Examination:** The user will be able to undertake an examination on the Laws of the Game and recieve a score and indication of pass/fail.
+
 - **View Previous Results:** Allows the user to see the results from all of their previous exams, including the time they undertook the exam and the result they recived.
 
 - **View User Profile:** Allows the user to see their user profile including their personal details, Unique User ID which was randomly generated when registering for the first time, and their accreditation status, which becomes TRUE when passing an exam for the first time.
@@ -88,8 +90,11 @@ The following features are displayed within the application for the user to navi
 
 ## Code Styling Guide / Styling Conventions (R5)
 
+### PEP 8
 
+I have taken on the PEP 8 style conventions when coding this application. 
 
-## Implementaton Plan (R7)
+## Implementaton Plan
 
-## Help Documentation (R8)
+- [Trello KanBan (Public)](https://trello.com/b/UhQ6BV0P/t1a3-fifa-lotg-exam)
+

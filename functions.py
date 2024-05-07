@@ -15,6 +15,8 @@ file_users = "exam_users.csv"
 referee_email = None
 user_details = {}
 
+
+
 ########## LOGIN AND USER MENU ##########
 
 # Login or Register Function
@@ -134,6 +136,8 @@ def create_users_file():
         user_file.write("user_id,email,first_name,last_name,password,accredited\n")
         user_file.close()
 
+
+
 ########## PERSONAL PROFILE ##########
 
 # Menu Item 3 - Personal Profile
@@ -145,6 +149,8 @@ def user_profile(email):
     accredited = user_details.get("accredited")
     print(f"\nRegistration Number: {user_id}\nName: {last_name}, {first_name}\nEmail: {referee_email}\nAccredited: {accredited}\n")
     return_or_exit()
+
+
 
 ########## PREVIOUS RESULTS ##########
 
@@ -174,10 +180,13 @@ def create_results_file():
         user_file = open(file_results, "w")
         user_file.write("user_id,first_name,last_name,email,date_time,score\n")
 
+
+
 ##########  REFEREE EXAM ##########
 
 # Menu Item 1 - Runs the Exam
 def user_exam():
+    print("\nWelcome to the FIFA Laws of the Game Exam.\n\nThere are 10 questions in this exam, with a pass mark of 80%\n\nYou must answer TRUE or FALSE to each of the questions.\n\nIf you wish to exit the exam without saving your results, type EXIT as the answer to the question.\n\nGoodluck!\n\n")
     exam = {}
     user_tally = 0
     with open(file_questions, 'r') as f:
@@ -259,6 +268,8 @@ def display_result(user_tally):
                 break
             else:
                 print("\nPlease enter a valid choice.")
+
+
 
 ########## EXITING THE APPLICATION ##########
 
