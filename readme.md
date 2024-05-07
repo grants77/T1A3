@@ -29,6 +29,7 @@ The Application will allow you to:
 This application was designed and tested using Windows Subsystem for Linux (WSL). It is recommended that the application be run on a standalone termianl and not within VSCode or similar.
 
 **1. Open a terminal**
+
 **2. Close the GitHub Repository via SSH:**
 > git clone git@github.com:grants77/T1A3.git
 

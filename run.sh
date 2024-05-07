@@ -7,7 +7,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 # Set the install.sh script to executable
-chmod +x install.sh
+chmod +x ./install.sh
 
 # Run the install.sh script
 ./install.sh
