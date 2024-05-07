@@ -96,7 +96,7 @@ I have taken on the PEP 8 style conventions when coding this application.
 
 ## Implementaton Plan
 
-I created and maintained a Trello KanBan for the planning and inplimentation of the application. Unfortunately I was sick for the majority of the project so it was not entirely kept up to date. Below is a screenshot of the Trello board on 5 May 2024 and a link to the live public board.
+I created and maintained a Trello KanBan for the planning and implimentation of the application. Unfortunately I was sick for the majority of the project so it was not entirely kept up to date. Below is a screenshot of the Trello board on 5 May 2024 and a link to the live public board.
 
 - [Trello KanBan (Public)](https://trello.com/b/UhQ6BV0P/t1a3-fifa-lotg-exam)
 
