@@ -26,16 +26,18 @@ The Application will allow you to:
 
 This application was designed and tested using Windows Subsystem for Linux (WSL). It is recommended that the application be run on a standalone termianl and not within VSCode or similar.
 
-1. Open a terminal
-2. Close the GitHub Repository via SSH:
+**1. Open a terminal**
+**2. Close the GitHub Repository via SSH:**
 > git@github.com:grants77/T1A3.git
-OR via HTTPS:
+
+**OR via HTTPS:**
+
 > https://github.com/grants77/T1A3.git
-3. Navigate into the directory of the Cloned Repository:
+**3. Navigate into the directory of the Cloned Repository:**
 > cd T1A3
-4. Add execute permissions to the run.sh script:
+**4. Add execute permissions to the run.sh script:**
 > chmod +x run.sh
-5. Run the run.sh script to begin the application:
+**5. Run the run.sh script to begin the application:**
 > ./run.sh
 
 
