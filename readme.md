@@ -22,6 +22,22 @@ The Application will allow you to:
 
 - [FIFA Laws of the Game (2023-24)](https://www.theifab.com/laws-of-the-game-documents/?language=all&year=2023%2F24)
 
+## User Instructions
+
+This application was designed and tested using Windows Subsystem for Linux (WSL). It is recommended that the application be run on a standalone termianl and not within VSCode or similar.
+
+1. Open a terminal
+2. Close the GitHub Repository via SSH:
+> git@github.com:grants77/T1A3.git
+OR via HTTPS:
+> https://github.com/grants77/T1A3.git
+3. Navigate into the directory of the Cloned Repository:
+> cd T1A3
+4. Add execute permissions to the run.sh script:
+> chmod +x run.sh
+5. Run the run.sh script to begin the application:
+> ./run.sh
+
 
 ### Resources (R3)
 
